@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+.navbar {
+  width: 15vw;
+  height: 100vh;
+  border-right: 1.5px solid #edf5fe;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.navLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.navGroup {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding-left: 15%;
+  font-weight: 500;
+  height: 40px;
+  color: #707070;
+  text-decoration: none;
+}
+
+/* cce3fe */
+.navbar p {
+  font-family: var(--poppins);
+  font-size: 16px;
+}
+.navGroup:focus {
+  outline: none;
+}
+.activeLink {
+  background-color: #cce3fe;
+  color: black;
+  outline: none;
+}
+.continueBtn,
+.cancelBtn {
+  width: 300px;
+  height: 50px;
+  border-radius: 8px;
+  font-size: 15px;
+}
+.continueBtn {
+  width: 300px;
+  height: 50px;
+  border: 1.5px solid #cf3636;
+  background-color: transparent;
+  color: #cf3636;
+  margin: 15px;
+}
+
+.cancelBtn {
+  background-color: #17a2b8;
+  border: none;
+  color: white;
+  margin-left: 15px;
+}

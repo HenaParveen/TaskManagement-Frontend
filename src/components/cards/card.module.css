@@ -1,0 +1,101 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+.card {
+  background-color: white;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 15px;
+  font-family: var(--poppins);
+  position: relative;
+}
+.cardGroup {
+  display: flex;
+  justify-content: space-between;
+}
+.checklist {
+  font-size: 13px;
+  font-weight: 600;
+  font-family: "Inter", sans-serif;
+}
+.menu {
+  position: absolute;
+  top: 20%;
+  left: 60%;
+  width: 90px;
+  background-color: white;
+  box-shadow: 0px 2px 22px rgba(126, 122, 122, 0.25);
+  font-size: small;
+  font-weight: 500;
+  border-radius: 7px;
+  padding: 7px;
+  cursor: pointer;
+}
+.icon {
+  background-color: #eeecec;
+  padding-bottom: 8px;
+  padding-right: 8px;
+  width: 15px;
+  height: 10px;
+  border-radius: 5px;
+}
+.tasksContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+.btnGroup {
+  display: flex;
+  font-size: 10px;
+  font-weight: 500;
+  gap: 5px;
+}
+.btnGroup div {
+  background-color: #eeecec;
+  border-radius: 5px;
+  padding: 4px;
+  color: #5a5a5a;
+  cursor: pointer;
+}
+
+.title {
+  font-weight: 450;
+  font-size: 17.5px;
+  margin-bottom: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.deleteBtn,
+.cancelBtn {
+  width: 300px;
+  height: 50px;
+  border-radius: 8px;
+  font-size: 15px;
+}
+.deleteBtn {
+  width: 300px;
+  height: 50px;
+  border: 1.5px solid #cf3636;
+  background-color: transparent;
+  color: #cf3636;
+  margin: 15px;
+}
+
+.cancelBtn {
+  background-color: #17a2b8;
+  border: none;
+  color: white;
+  margin-left: 15px;
+}
+
+.taskItem {
+  padding: 7px;
+  border: 2px solid #e2e2e2;
+  font-size: 14px;
+  border-radius: 12px;
+  font-family: "Inter", sans-serif;
+}
+.card::-webkit-scrollbar-thumb {
+  width: 5px;
+}

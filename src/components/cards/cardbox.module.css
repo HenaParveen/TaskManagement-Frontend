@@ -1,0 +1,23 @@
+.cardBox {
+  background-color: #f1f7fd;
+  min-width: 27%;
+  height: 75vh;
+  margin-bottom: 15px;
+  border-radius: 7px;
+}
+.cardBoxGroup {
+  margin: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+.cardList {
+  height: 68vh;
+  overflow-y: auto;
+}
+.cardList ::-webkit-scrollbar-thumb {
+  height: 10px;
+}
+.cardList::-webkit-scrollbar-track {
+  background-color: #d6eaf4;
+  border-radius: 10px;
+}

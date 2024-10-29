@@ -1,0 +1,40 @@
+.bannerComponent {
+  width: 60vw;
+  height: 100vh;
+  background-color: #17a2b8;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.sphere {
+  background-color: #317f8b;
+  width: 235px;
+  height: 235px;
+  border-radius: 50%;
+}
+.bannerComponent img {
+  margin-top: -268px;
+  margin-left: -12px;
+  width: 100%;
+  max-width: 380px;
+  height: auto;
+}
+
+.p1,
+.p2 {
+  font-weight: 400;
+  color: white;
+}
+.p1 {
+  font-size: 33px;
+  margin-top: -25px;
+  line-height: 1.5;
+}
+
+.p2 {
+  font-size: 17.5px;
+  line-height: 1.5;
+  margin-top: -8px;
+}
