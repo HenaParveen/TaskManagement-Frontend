@@ -1,0 +1,73 @@
+.loginContainer {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  margin-top: 15vh;
+  margin-left: 40%;
+  align-items: center;
+  gap: 22px;
+}
+.loginContainer p {
+  font-weight: 600;
+  font-size: 30px;
+}
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-bottom: 10px;
+}
+.postIcon {
+  position: absolute;
+  top: 28.5%;
+  left: -30%;
+
+  z-index: 2;
+}
+.lockIcon {
+  z-index: 2;
+  position: absolute;
+  top: 46%;
+  left: -30%;
+}
+.eyeOnIcon,
+.eyeOffIcon {
+  z-index: 2;
+  position: absolute;
+  top: 47%;
+  left: 120%;
+}
+.inputGroup input {
+  width: 415px;
+  height: 52px;
+  box-sizing: border-box;
+  border: 1.5px solid #d0d0d0;
+  border-radius: 11px;
+  font-size: 17px;
+  padding-left: 50px;
+}
+.loginBtn {
+  background-color: #17a2b8;
+  width: 415px;
+  height: 48px;
+  border: none;
+  border-radius: 40px;
+  font-size: 18px;
+  color: white;
+  margin-top: 15px;
+}
+.registerBtn {
+  background-color: transparent;
+  color: #17a2b8;
+  width: 415px;
+  height: 48px;
+  border: 1px solid;
+  border-radius: 40px;
+  font-size: 18px;
+  outline: none;
+}
+.loginContainer span {
+  color: #828282;
+  font-size: 16px;
+}
