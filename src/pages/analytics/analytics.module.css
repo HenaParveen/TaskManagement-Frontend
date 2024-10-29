@@ -1,0 +1,35 @@
+.analyticsContainer {
+  margin-top: 25px;
+  margin-left: 5%;
+}
+.analyticsContainer p {
+  font-size: 23px;
+  font-weight: 600;
+}
+.boxContainer {
+  display: flex;
+  gap: 5%;
+}
+.box1 ul,
+.box2 ul {
+  border-radius: 10px;
+  padding: 20px;
+  margin: 0;
+  margin-left: 20px;
+}
+.box1 li,
+.box2 li {
+  margin-bottom: 20px;
+}
+.box1,
+.box2 {
+  background-color: #f9fcff;
+  display: flex;
+  justify-content: space-between;
+  width: 30vw;
+  height: 25vh;
+  border-radius: 8px;
+}
+li::marker {
+  color: #90c4cc;
+}
