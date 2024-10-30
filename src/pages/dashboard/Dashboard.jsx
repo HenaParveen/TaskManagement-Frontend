@@ -2,7 +2,7 @@ import { useState } from "react";
 import styles from "./dashboard.module.css";
 import { format } from "date-fns";
 import Arrow from "..//../assets/Vector 14.svg";
-import CardBox from "../../component/cards/CardBox";
+import CardBox from "../../components/cards/CardBox";
 import { useSelector } from "react-redux";
 
 import { GoPersonAdd } from "react-icons/go";
