@@ -283,9 +283,9 @@ const userTaskSlice = createSlice({
         state.isSuccess = false;
         state.isLoading = false;
         state.isLoggedIn = false;
-        state.message = action.payload.message;
+        state.message = action.payload;
         state.user = null;
-        toast.error(action.payload.message);
+        toast.error(action.payload);
       })
 
       /* Login Function case handling */
@@ -306,7 +306,7 @@ const userTaskSlice = createSlice({
         state.isSuccess = false;
         state.isLoading = false;
         state.isLoggedIn = false;
-        state.message = action.payload.message;
+        state.message = action.payload;
         state.user = null;
         toast.error(action.payload);
       })
@@ -329,7 +329,7 @@ const userTaskSlice = createSlice({
         state.isSuccess = false;
         state.isLoading = false;
         state.isLoggedIn = false;
-        state.message = action.payload.message;
+        state.message = action.payload;
         state.user = null;
         toast.error(action.payload);
       })
@@ -349,7 +349,7 @@ const userTaskSlice = createSlice({
         state.isError = true;
         state.isSuccess = false;
         state.isLoading = false;
-        state.message = action.payload.message;
+        state.message = action.payload;
         state.analytics = null;
         toast.error(action.payload);
       })
@@ -370,7 +370,7 @@ const userTaskSlice = createSlice({
         state.isError = true;
         state.isSuccess = false;
         state.isLoading = false;
-        state.message = action.payload.message;
+        state.message = action.payload;
         toast.error(action.payload);
       })
 
@@ -389,7 +389,7 @@ const userTaskSlice = createSlice({
         state.isError = true;
         state.isSuccess = false;
         state.isLoading = false;
-        state.message = action.payload.message;
+        state.message = action.payload;
         state.card = null;
         toast.error(action.payload);
       })
@@ -409,7 +409,7 @@ const userTaskSlice = createSlice({
         state.isError = true;
         state.isSuccess = false;
         state.isLoading = false;
-        state.message = action.payload.message;
+        state.message = action.payload;
         state.task = null;
         toast.error(action.payload);
       })
@@ -430,7 +430,7 @@ const userTaskSlice = createSlice({
         state.isError = true;
         state.isSuccess = false;
         state.isLoading = false;
-        state.message = action.payload.message;
+        state.message = action.payload;
         state.card = null;
         toast.error(action.payload);
       })
@@ -450,7 +450,7 @@ const userTaskSlice = createSlice({
         state.isError = true;
         state.isSuccess = false;
         state.isLoading = false;
-        state.message = action.payload.message;
+        state.message = action.payload;
         toast.error(action.payload);
       })
 
@@ -471,7 +471,7 @@ const userTaskSlice = createSlice({
         state.isError = true;
         state.isSuccess = false;
         state.isLoading = false;
-        state.message = action.payload.message;
+        state.message = action.payload;
         state.card = null;
         toast.error(action.payload);
       })
@@ -492,7 +492,7 @@ const userTaskSlice = createSlice({
         state.isError = true;
         state.isSuccess = false;
         state.isLoading = false;
-        state.message = action.payload.message;
+        state.message = action.payload;
         state.card = null;
         toast.error(action.payload);
       })
@@ -512,7 +512,7 @@ const userTaskSlice = createSlice({
         state.isError = true;
         state.isSuccess = false;
         state.isLoading = false;
-        state.message = action.payload.message;
+        state.message = action.payload;
         toast.error(action.payload);
       });
   },
