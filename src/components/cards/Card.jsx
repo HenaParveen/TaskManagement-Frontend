@@ -123,7 +123,7 @@ function Card(props) {
     color:
       status === "done"
         ? "white"
-        : isDueDatePassed(dueDate)
+        : isDueDatePassed(dueDate) || priority === "high"
         ? "white"
         : "#5a5a5a",
     border: "none",
@@ -131,7 +131,7 @@ function Card(props) {
     background:
       status === "done"
         ? "#63C05B"
-        : isDueDatePassed(dueDate)
+        : isDueDatePassed(dueDate) || priority === "high"
         ? "#CF3636"
         : "#DBDBDB",
   };

@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import userTaskService from "./userTaskService";
 import toast from "react-hot-toast";
+import { act } from "react";
 
 const initialState = {
   isLoggedIn: false,
@@ -361,9 +362,8 @@ const userTaskSlice = createSlice({
         state.isError = false;
         state.isSuccess = true;
         state.isLoading = false;
-        state.isLoggedIn = false;
         state.message = action.payload.message;
-        state.user = null;
+        state.user = action.payload.data;
         toast.success(action.payload.message);
       })
       .addCase(updateUser.rejected, (state, action) => {

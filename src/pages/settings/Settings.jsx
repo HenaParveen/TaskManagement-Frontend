@@ -42,9 +42,8 @@ function Settings() {
     setUpdatedData((prevData) => ({ ...prevData, [name]: value }));
   };
   const validateForm = () => {
-    const { name, oldPassword, newPassword } = updatedData;
     if (!name && !oldPassword && !newPassword) {
-      toast.error("Atleast one field is required to update");
+      toast.error("At least one field is required to update");
       return false;
     }
     if (newPassword && !oldPassword) {
@@ -55,15 +54,48 @@ function Settings() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (validateForm()) {
-      const userData = {
-        name,
-        email,
-        newPassword: newPassword,
+
+    const isNameChanged = name !== user?.name;
+    const isEmailChanged = email !== user?.email;
+    const isPasswordChanged = newPassword && oldPassword;
+
+    const changesCount = [
+      isNameChanged,
+      isEmailChanged,
+      isPasswordChanged,
+    ].filter(Boolean).length;
+
+    console.log(changesCount, user);
+    if (changesCount > 1) {
+      toast.error("Please update only one field at a time.");
+      return;
+    }
+
+    if ((newPassword && !oldPassword) || (!newPassword && oldPassword)) {
+      toast.error(
+        "Please provide both current and new password to update your password."
+      );
+      return;
+    }
+
+    let userData = {};
+
+    if (isNameChanged) {
+      userData = { name };
+    } else if (isEmailChanged) {
+      userData = { email };
+    } else if (isPasswordChanged) {
+      userData = {
+        newPassword,
         currentPassword: oldPassword,
       };
+    }
+
+    if (validateForm()) {
       await dispatch(updateUser(userData));
     }
+    if (!isNameChanged && (isEmailChanged || isPasswordChanged))
+      navigate("/login");
   };
 
   useEffect(() => {
