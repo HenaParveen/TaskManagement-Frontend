@@ -6,13 +6,13 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
 import Dashboard from "./pages/dashboard/Dashboard";
-import Loader from "./component/loaders/Loader";
+import Loader from "./components/loaders/Loader";
 import Settings from "./pages/settings/Settings";
 import Analytics from "./pages/analytics/Analytics";
 
 /* Do Lazy Loading for required things */
-const AppLayout = lazy(() => import("./component/layouts/AppLayout"));
-const AuthLayout = lazy(() => import("./component/layouts/AuthLayout"));
+const AppLayout = lazy(() => import("./components/layouts/AppLayout"));
+const AuthLayout = lazy(() => import("./components/layouts/AuthLayout"));
 const ShowCard = lazy(() => import("./pages/showCard/ShowCard"));
 
 function App() {
