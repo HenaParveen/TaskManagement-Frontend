@@ -249,7 +249,10 @@ function Card(props) {
         </div>
       </div>
 
-      <div className={styles.title}>{title}</div>
+      {/* <div className={styles.title}>{title}</div> */}
+      <div className={styles.title} data-title={title}>
+        {title}
+      </div>
       <div className={styles.cardGroup}>
         <div className={styles.checklist}>
           Checklist({tasks.filter((task) => task.isDone).length}/{tasks.length})
