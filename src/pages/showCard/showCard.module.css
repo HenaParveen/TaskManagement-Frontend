@@ -1,0 +1,93 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+.viewCardContainer {
+  padding: 10px;
+}
+.logo {
+  display: flex;
+  gap: 5px;
+  font-size: 1rem;
+  font-family: var(--poppins);
+  font-weight: bold;
+  margin-left: 30px;
+}
+.cardContainer {
+  margin: 5% auto;
+  padding: 30px;
+  max-width: 550px;
+  height: auto;
+  border-radius: 12px;
+  border: 2px solid #e2e2e2;
+  padding-bottom: 40px;
+}
+.priorityGroup {
+  display: flex;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 10px;
+}
+.title {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+.checklist {
+  font-family: "Inter";
+  font-size: 14px;
+  font-weight: bold;
+}
+.tasksContainer {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-height: 400px;
+  overflow-y: scroll;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+}
+.tasksContainer input[type="checkbox"] {
+  accent-color: #17a2b8;
+}
+.taskItem {
+  padding: 8px;
+  font-size: 1.1rem;
+  border: 2px solid #e2e2e2;
+  border-radius: 12px;
+}
+.dueDate {
+  width: 65px;
+  height: 25px;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+  border: none;
+  font-family: var(--poppins);
+  background-color: #cf3636;
+  border-radius: 8px;
+  color: white;
+}
+@media only screen and (max-width: 767px) {
+  .logo {
+    margin-left: 10px;
+  }
+  .cardContainer {
+    width: 80vw;
+    padding: 15px;
+    max-height: 70vh;
+    font-size: 10px;
+  }
+  .tasksContainer {
+    overflow-y: scroll;
+    padding-bottom: 20px;
+  }
+  .tasksContainer::-webkit-scrollbar {
+    width: 8px;
+  }
+  .tasksContainer::-webkit-scrollbar-thumb {
+    background-color: #9cb7c5;
+    border-radius: 4px;
+  }
+  .tasksContainer::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 4px;
+  }
+}

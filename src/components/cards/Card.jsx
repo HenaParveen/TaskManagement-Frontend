@@ -145,7 +145,7 @@ function Card(props) {
     setRefresh((prev) => !prev);
   };
   const handleCopyToClipboard = () => {
-    const textToCopy = `${BaseURL}/view/${id}`;
+    const textToCopy = `${BaseURL}/show/${id}`;
     navigator.clipboard.writeText(textToCopy).then(() => {
       setShowMenu(false);
       toast.success("Link copied to Clipboard");
@@ -249,7 +249,6 @@ function Card(props) {
         </div>
       </div>
 
-      {/* <div className={styles.title}>{title}</div> */}
       <div className={styles.title} data-title={title}>
         {title}
       </div>
