@@ -2,7 +2,7 @@ import { useState } from "react";
 import styles from "./dashboard.module.css";
 import { format } from "date-fns";
 import Arrow from "..//../assets/Vector 14.svg";
-import CardBox from "../../components/cards/CardBox";
+import CardBox from "../../component/cards/CardBox";
 import { useSelector } from "react-redux";
 
 import { GoPersonAdd } from "react-icons/go";
@@ -16,7 +16,7 @@ function Dashboard() {
   const currentDate = format(new Date(), "do MMM, yyyy");
   const [dropDown, setDropDown] = useState(false);
   const [selectedFilter, setSelectedOption] = useState("This Week");
-  const [assignee, setAssignee] = useState([]);
+  const [assignee, setAssignee] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
   const [refresh, setRefresh] = useState(false);
   const dispatch = useDispatch();

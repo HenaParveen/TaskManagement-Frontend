@@ -99,3 +99,15 @@
 .card::-webkit-scrollbar-thumb {
   width: 5px;
 }
+
+.capsule {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #e8dcdc;
+  text-align: center;
+  line-height: 30px;
+  font-weight: bold;
+  color: #333;
+}

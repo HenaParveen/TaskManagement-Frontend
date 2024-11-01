@@ -119,7 +119,7 @@ function CardModal({
         tasks: props?.tasks || [],
         priority: props?.priority,
         dueDate: props?.dueDate || null,
-        assignee: props?.assignee || [],
+        assignee: props?.assignee || "",
       }));
       setSelectedPriority(props?.priority);
       setTasks(props?.tasks);

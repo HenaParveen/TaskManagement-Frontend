@@ -14,6 +14,7 @@ import {
   deleteCard,
   updateCardTaskStatus,
 } from "../../redux/features/userTask/userTaskSlice";
+import { getInitials } from "../../utils/helper";
 
 function Card(props) {
   const BaseURL = import.meta.env.VITE_APP_URL;
@@ -26,6 +27,7 @@ function Card(props) {
     status,
     collapse,
     handleCollapse,
+    assignee,
     setRefresh,
     refresh,
   } = props;
@@ -166,11 +168,25 @@ function Card(props) {
   return (
     <div className={styles.card}>
       <div className={styles.cardGroup}>
-        <div style={{ display: "flex", fontSize: "12px" }}>
+        <div
+          style={{
+            display: "flex",
+            fontSize: "12px",
+            gap: "5px",
+            alignItems: "center",
+          }}
+        >
           <div>
             <GoDotFill color={CardPriority.color} size={"16px"} />
           </div>
           {CardPriority.name}
+          {assignee && (
+            <div className={styles.capsule}>
+              <span className="initials">
+                {getInitials(assignee).toUpperCase()}
+              </span>
+            </div>
+          )}
         </div>
         <div>
           <TbDots
