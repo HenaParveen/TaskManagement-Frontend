@@ -9,7 +9,7 @@ import Loader from "./components/loaders/Loader";
 import Settings from "./pages/settings/Settings";
 import Analytics from "./pages/analytics/Analytics";
 import PageNotFound from "./pages/404/PageNotFound";
-import axios from "axios";
+
 import { useDispatch, useSelector } from "react-redux";
 import { loginStatus, userInfo } from "./redux/features/userTask/userTaskSlice";
 
@@ -18,7 +18,6 @@ const AuthLayout = lazy(() => import("./components/layouts/AuthLayout"));
 const ShowCard = lazy(() => import("./pages/showCard/ShowCard"));
 
 function App() {
-  axios.defaults.withCredentials = true;
   const { isLoggedIn, user } = useSelector((state) => state.userTask);
 
   const dispatch = useDispatch();
