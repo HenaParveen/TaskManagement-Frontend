@@ -192,7 +192,6 @@ function CardModal({
 
         <div className={styles.assignGroup}>
           <div className={styles.label}>Assign to</div>
-
           {assignees.length > 0 && (
             <select
               value={assignTo || cardData.assignee}
