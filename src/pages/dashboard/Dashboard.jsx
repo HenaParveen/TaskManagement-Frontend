@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./dashboard.module.css";
 import { format } from "date-fns";
 import Arrow from "..//../assets/Vector 14.svg";
@@ -11,14 +11,16 @@ import { checkEmail } from "../../utils/helper";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { updateAssignee } from "../../redux/features/userTask/userTaskSlice";
+import userTaskService from "../../redux/features/userTask/userTaskService";
 
 function Dashboard() {
   const currentDate = format(new Date(), "do MMM, yyyy");
   const [dropDown, setDropDown] = useState(false);
   const [selectedFilter, setSelectedOption] = useState("This Week");
-  const [assignee, setAssignee] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
   const [refresh, setRefresh] = useState(false);
+  const [assignees, setAssignees] = useState([]);
+  const [assignTo, setAssignedTo] = useState(null);
   const dispatch = useDispatch();
 
   const [successMessage, setSuccessMessage] = useState("");
@@ -46,23 +48,21 @@ function Dashboard() {
   };
 
   const handleSharePeople = () => {
-    const checkEmailFormat = checkEmail(assignee);
+    const checkEmailFormat = checkEmail(assignTo);
     if (!checkEmailFormat) {
       toast.error("Please provide a valid email address");
       return;
     }
     const assigneeData = {
-      email: assignee,
+      email: assignTo,
     };
     dispatch(updateAssignee(assigneeData));
-    setSuccessMessage(`${assignee} added to the board`);
-    setAssignee("");
+    setSuccessMessage(`${assignTo} added to the board`);
   };
 
   const handleOkay = () => {
     setSuccessMessage("");
     setModalOpen(false);
-    setAssignee("");
     setRefresh(!refresh);
   };
 
@@ -85,21 +85,39 @@ function Dashboard() {
     setModalOpen(false);
   };
 
+  const fetchAllEmails = async () => {
+    try {
+      const response = await userTaskService.getAllEmail();
+      setAssignees(response.data);
+    } catch (error) {
+      console.error("Error fetching Emails:", error);
+    }
+  };
+  useEffect(() => {
+    fetchAllEmails();
+  }, []);
+
   return (
     <div className={styles.dashboardContainer}>
       <Modal isOpen={modalOpen} style={customStyles}>
         {!successMessage && (
           <div>
             <h3>Add People to the board</h3>
-            <input
-              type="text"
-              name="peopleEmail"
-              placeholder="Enter the email"
-              className={styles.peopleEmail}
-              value={assignee}
-              onChange={(e) => setAssignee(e.target.value)}
-              required
-            />
+            {assignees.length > 0 && (
+              <select
+                value={assignTo || user?.email}
+                className={styles.titleInput}
+                onChange={(e) => setAssignedTo(e.target.value)}
+                style={{ width: "100%" }}
+              >
+                <option value=""></option>
+                {assignees.map((email, index) => (
+                  <option key={index} value={email}>
+                    {email}
+                  </option>
+                ))}
+              </select>
+            )}
             <div
               style={{
                 display: "flex",
@@ -116,7 +134,7 @@ function Dashboard() {
             </div>
           </div>
         )}
-        {successMessage && ( // Conditionally render the success message
+        {successMessage && (
           <div className={styles.successContent}>
             <div className={styles.successMessage}>{successMessage}</div>
             <button className={styles.successBtn} onClick={handleOkay}>
