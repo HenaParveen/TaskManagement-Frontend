@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./card.module.css";
 import { RiArrowDropDownLine, RiArrowDropUpLine } from "react-icons/ri";
 import { TbDots } from "react-icons/tb";
@@ -162,7 +162,7 @@ function Card(props) {
         cardData: { tasks: updatedTasks },
       })
     );
-    setRefresh((prev) => !prev);
+    // setRefresh((prev) => !prev);
   };
 
   return (
