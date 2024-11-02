@@ -113,7 +113,7 @@ function CardModal({
       const response = await userTaskService.getAllEmail();
       setAssignees(response.data);
     } catch (error) {
-      console.error("Error fetching Emailss:", error);
+      console.error("Error fetching Emails:", error);
     }
   };
   useEffect(() => {

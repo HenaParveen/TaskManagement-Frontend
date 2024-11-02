@@ -1,6 +1,6 @@
 import { lazy, Suspense, useEffect } from "react";
 import "./App.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
@@ -12,14 +12,14 @@ import PageNotFound from "./pages/404/PageNotFound";
 
 import { useDispatch, useSelector } from "react-redux";
 import { loginStatus, userInfo } from "./redux/features/userTask/userTaskSlice";
+import axios from "axios";
 
 const AppLayout = lazy(() => import("./components/layouts/AppLayout"));
 const AuthLayout = lazy(() => import("./components/layouts/AuthLayout"));
 const ShowCard = lazy(() => import("./pages/showCard/ShowCard"));
 
 function App() {
-  const { isLoggedIn, user } = useSelector((state) => state.userTask);
-
+  axios.defaults.withCredentials = true;
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -27,10 +27,9 @@ function App() {
   }, [dispatch]);
 
   useEffect(() => {
-    if (isLoggedIn && !user) {
-      dispatch(userInfo());
-    }
-  }, [dispatch, user, isLoggedIn]);
+    dispatch(userInfo());
+  }, [dispatch]);
+
   return (
     <BrowserRouter>
       <Routes>
