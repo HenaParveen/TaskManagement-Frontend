@@ -1,7 +1,16 @@
+import { useEffect } from "react";
 import styles from "./analytics.module.css";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { loginStatus } from "../../redux/features/userTask/userTaskSlice";
 function Analytics() {
   const { analytics } = useSelector((state) => state.userTask);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loginStatus());
+  }, [dispatch]);
+
   return (
     <div className={styles.analyticsContainer}>
       <p>Analytics</p>
