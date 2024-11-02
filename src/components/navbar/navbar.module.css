@@ -47,15 +47,15 @@
 .continueBtn {
   width: 300px;
   height: 50px;
-  border: 1.5px solid #cf3636;
-  background-color: transparent;
-  color: #cf3636;
+  border: none;
+  background-color: #17a2b8;
+  color: white;
   margin: 15px;
 }
 
 .cancelBtn {
-  background-color: #17a2b8;
-  border: none;
-  color: white;
+  background-color: transparent;
+  border: 1.5px solid #cf3636;
+  color: #cf3636;
   margin-left: 15px;
 }
