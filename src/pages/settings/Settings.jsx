@@ -1,16 +1,20 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styles from "./settings.module.css";
 import { CiLock, CiUser } from "react-icons/ci";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { MdOutlineEmail } from "react-icons/md";
 import toast, { Toaster } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
-import { updateUser } from "../../redux/features/userTask/userTaskSlice";
+import {
+  loginStatus,
+  updateUser,
+} from "../../redux/features/userTask/userTaskSlice";
 
 function Settings() {
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showOldPassword, setShowOldPassword] = useState(false);
   const { user } = useSelector((state) => state.userTask);
+
   const dispatch = useDispatch();
 
   const [updatedData, setUpdatedData] = useState({
@@ -89,6 +93,9 @@ function Settings() {
 
     if (validateForm()) {
       await dispatch(updateUser(userData));
+    }
+    if (isEmailChanged || isPasswordChanged) {
+      dispatch(loginStatus());
     }
   };
 

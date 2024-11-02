@@ -15,7 +15,7 @@ function ShowCard() {
   const { isLoading } = useSelector((state) => state.userTask);
   const { cardId } = useParams();
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+
   const priorities = {
     high: {
       color: "#FF2473",
