@@ -43,8 +43,8 @@ function App() {
         >
           {/* Child of AppLayout */}
           <Route index element={<Dashboard />} />
-          <Route path="analytics" element={<Analytics />} />
-          <Route path="settings" element={<Settings />} />
+          <Route path="/analytics" element={<Analytics />} />
+          <Route path="/settings" element={<Settings />} />
         </Route>
         <Route
           path={"/"}
@@ -55,8 +55,8 @@ function App() {
           }
         >
           {/* Child Route of AuthLayoutRoute */}
-          <Route path="register" element={<Register />} />
-          <Route path="login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
         </Route>
         <Route
           path={"/show/:cardId"}
