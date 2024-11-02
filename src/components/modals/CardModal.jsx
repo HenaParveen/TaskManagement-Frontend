@@ -137,11 +137,9 @@ function CardModal({
 
   const handleEditCard = async (cardData) => {
     await dispatch(updateCard({ cardId, cardData }));
-    setRefresh((prev) => !prev);
   };
   const handleAdd = async (cardData) => {
     await dispatch(addCard(cardData));
-    setRefresh((prev) => !prev);
   };
 
   return (

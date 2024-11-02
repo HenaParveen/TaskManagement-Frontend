@@ -40,7 +40,7 @@ function CardBox({ status, filter, setRefresh, refresh }) {
   };
   useEffect(() => {
     fetchCardsData();
-  }, [filter, status, refresh]);
+  }, [filter, status, refresh, modalOpen]);
 
   return (
     <div className={styles.cardBox}>
