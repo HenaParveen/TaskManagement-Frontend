@@ -13,24 +13,17 @@ import {
   logout,
 } from "../../redux/features/userTask/userTaskSlice";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Modal from "react-modal";
 
 function Navbar() {
   const [activeLink, setActiveLink] = useState("board");
   const [modalOpen, setModalOpen] = useState(false);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { isLoggedIn } = useSelector((state) => state.userTask);
 
   useEffect(() => {
-    if (!isLoggedIn) navigate("/login");
-  }, [isLoggedIn, navigate]);
-
-  useEffect(() => {
-    /* This will act to set the active link path */
     if (location.pathname === "/") {
       setActiveLink("board");
     } else if (location.pathname === "/analytics") {

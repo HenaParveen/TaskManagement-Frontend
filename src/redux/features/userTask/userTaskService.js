@@ -33,6 +33,14 @@ const logout = async () => {
   return response.data;
 };
 
+const loginStatus = async () => {
+  const API_URL = `${BACKEND_URL}api/v1/auth/loginStatus`;
+  const response = await axios.get(API_URL, {
+    withCredentials: true,
+  });
+  return response.data;
+};
+
 const addCard = async (payLoad) => {
   const API_URL = `${BACKEND_URL}api/v1/task/add`;
   const response = await axios.post(API_URL, payLoad, {
@@ -111,6 +119,15 @@ const getAllEmail = async () => {
   });
   return response.data;
 };
+
+const userInfo = async (payLoad) => {
+  const API_URL = `${BACKEND_URL}api/v1/auth/userInfo`;
+  const response = await axios.get(API_URL, payLoad, {
+    withCredentials: true,
+  });
+  return response.data;
+};
+
 const userTaskService = {
   register,
   login,
@@ -125,6 +142,8 @@ const userTaskService = {
   logout,
   updateAssignee,
   getAllEmail,
+  loginStatus,
+  userInfo,
 };
 
 export default userTaskService;

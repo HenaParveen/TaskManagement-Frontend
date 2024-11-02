@@ -71,6 +71,42 @@ export const logout = createAsyncThunk(
   }
 );
 
+export const loginStatus = createAsyncThunk(
+  "userTaskService/loginStatus",
+  async (_, thunkAPI) => {
+    try {
+      return await userTaskService.loginStatus();
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+export const userInfo = createAsyncThunk(
+  "userTaskService/userInfo",
+  async (_, thunkAPI) => {
+    try {
+      return await userTaskService.userInfo();
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString() ||
+        "Failed at fetching user info";
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 export const addCard = createAsyncThunk(
   "userTaskService/addCard",
   async (cardData, thunkAPI) => {
@@ -287,6 +323,27 @@ const userTaskSlice = createSlice({
         toast.error(action.payload);
       })
 
+      //Get User Info
+      .addCase(userInfo.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(userInfo.fulfilled, (state, action) => {
+        state.isError = false;
+        state.isSuccess = true;
+        state.isLoading = false;
+        state.isLoggedIn = true;
+        state.message = action.payload.message;
+        state.user = action.payload.data;
+      })
+      .addCase(userInfo.rejected, (state, action) => {
+        state.isError = true;
+        state.isSuccess = false;
+        state.isLoading = false;
+        state.isLoggedIn = false;
+        state.message = action.payload;
+        state.user = null;
+      })
+
       /* Logout Function case handling */
       .addCase(logout.pending, (state) => {
         state.isLoading = true;
@@ -308,6 +365,23 @@ const userTaskSlice = createSlice({
         state.message = action.payload;
         state.user = null;
         toast.error(action.payload);
+      })
+
+      .addCase(loginStatus.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(loginStatus.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.isLoggedIn = action.payload;
+        if (action.payload.message === "invalid signature") {
+          state.isLoggedIn = false;
+        }
+      })
+      .addCase(loginStatus.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
       })
 
       /* get Analytics Data */

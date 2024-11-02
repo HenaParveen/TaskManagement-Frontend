@@ -6,14 +6,13 @@ import { MdOutlineEmail } from "react-icons/md";
 import toast, { Toaster } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { updateUser } from "../../redux/features/userTask/userTaskSlice";
-import { useNavigate } from "react-router-dom";
 
 function Settings() {
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showOldPassword, setShowOldPassword] = useState(false);
-  const { user, isLoggedIn } = useSelector((state) => state.userTask);
+  const { user } = useSelector((state) => state.userTask);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+
   const [updatedData, setUpdatedData] = useState({
     name: user?.name,
     email: user?.email,
@@ -92,10 +91,6 @@ function Settings() {
       await dispatch(updateUser(userData));
     }
   };
-
-  useEffect(() => {
-    if (!isLoggedIn) navigate("/login");
-  }, [isLoggedIn, navigate]);
 
   return (
     <div className={styles.settingsContainer}>
