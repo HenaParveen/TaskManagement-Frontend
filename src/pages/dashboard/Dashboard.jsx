@@ -110,10 +110,7 @@ function Dashboard() {
               <button className={styles.cancelBtn} onClick={onModalClose}>
                 Cancel
               </button>
-              <button
-                className={styles.continueBtn}
-                onClick={handleSharePeople}
-              >
+              <button className={styles.addEmail} onClick={handleSharePeople}>
                 Add Email
               </button>
             </div>

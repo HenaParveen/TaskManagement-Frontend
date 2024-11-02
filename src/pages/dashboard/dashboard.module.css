@@ -72,6 +72,16 @@
   font-weight: 600;
 }
 
+.addEmail {
+  width: 50%;
+  height: 40px;
+  border: 1.5px solid #17a2b8;
+  background-color: #17a2b8;
+  border-radius: 10px;
+  color: white;
+  font-weight: 600;
+}
+
 .cancelBtn {
   width: 50%;
   height: 40px;
