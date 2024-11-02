@@ -2,7 +2,6 @@ import { lazy, Suspense } from "react";
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-/* How Many Page are there */
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
 import Dashboard from "./pages/dashboard/Dashboard";
@@ -10,7 +9,6 @@ import Loader from "./components/loaders/Loader";
 import Settings from "./pages/settings/Settings";
 import Analytics from "./pages/analytics/Analytics";
 
-/* Do Lazy Loading for required things */
 const AppLayout = lazy(() => import("./components/layouts/AppLayout"));
 const AuthLayout = lazy(() => import("./components/layouts/AuthLayout"));
 const ShowCard = lazy(() => import("./pages/showCard/ShowCard"));

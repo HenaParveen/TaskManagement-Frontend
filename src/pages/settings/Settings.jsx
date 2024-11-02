@@ -11,9 +11,7 @@ import { useNavigate } from "react-router-dom";
 function Settings() {
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showOldPassword, setShowOldPassword] = useState(false);
-  const { user, isLoggedIn, isSuccess } = useSelector(
-    (state) => state.userTask
-  );
+  const { user, isLoggedIn } = useSelector((state) => state.userTask);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [updatedData, setUpdatedData] = useState({
@@ -65,7 +63,6 @@ function Settings() {
       isPasswordChanged,
     ].filter(Boolean).length;
 
-    console.log(changesCount, user);
     if (changesCount > 1) {
       toast.error("Please update only one field at a time.");
       return;
@@ -94,12 +91,10 @@ function Settings() {
     if (validateForm()) {
       await dispatch(updateUser(userData));
     }
-    if (!isNameChanged && (isEmailChanged || isPasswordChanged))
-      navigate("/login");
   };
 
   useEffect(() => {
-    if (!isLoggedIn && isSuccess) navigate("/login");
+    if (!isLoggedIn) navigate("/login");
   }, [isLoggedIn, navigate]);
 
   return (

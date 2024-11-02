@@ -7,11 +7,10 @@ export function checkEmail(email) {
 }
 
 export function getInitials(nameOrEmail) {
-  const parts = nameOrEmail.split(" ");
+  const parts = nameOrEmail.split("");
   if (parts.length > 1) {
-    return parts.map((part) => part[0]).join("");
+    return parts[0] + parts[1];
   } else {
-    const emailParts = nameOrEmail.split("@")[0].split(".");
-    return emailParts.map((part) => part[0]).join("");
+    return parts[0];
   }
 }

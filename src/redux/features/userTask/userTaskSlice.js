@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import userTaskService from "./userTaskService";
 import toast from "react-hot-toast";
-import { act } from "react";
 
 const initialState = {
   isLoggedIn: false,
@@ -104,25 +103,6 @@ export const getCard = createAsyncThunk(
         error.message ||
         error.toString() ||
         "Failed at getting Card Details";
-
-      return thunkAPI.rejectWithValue(message);
-    }
-  }
-);
-
-export const getCards = createAsyncThunk(
-  "userTaskService/getCards",
-  async ({ datePreference, status }, thunkAPI) => {
-    try {
-      return await userTaskService.getCards(datePreference, status);
-    } catch (error) {
-      const message =
-        (error.response &&
-          error.response.data &&
-          error.response.data.message) ||
-        error.message ||
-        error.toString() ||
-        "Failed at getting all Cards Details";
 
       return thunkAPI.rejectWithValue(message);
     }
@@ -258,10 +238,6 @@ const userTaskSlice = createSlice({
       state.cardAdded = false;
       state.updateCard = false;
     },
-    RESET_CARD_ADD_UPDATE_STATUS(state) {
-      state.cardAdded = false;
-      state.updateCard = false;
-    },
   },
   extraReducers: (builder) => {
     builder
@@ -394,26 +370,6 @@ const userTaskSlice = createSlice({
         toast.error(action.payload);
       })
 
-      /* Get Cards Details*/
-      .addCase(getCards.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(getCards.fulfilled, (state, action) => {
-        state.isError = false;
-        state.isSuccess = true;
-        state.isLoading = false;
-        state.message = action.payload.message;
-        state.task = action.payload.data;
-      })
-      .addCase(getCards.rejected, (state, action) => {
-        state.isError = true;
-        state.isSuccess = false;
-        state.isLoading = false;
-        state.message = action.payload;
-        state.task = null;
-        toast.error(action.payload);
-      })
-
       /* Update Card Details*/
       .addCase(updateCard.pending, (state) => {
         state.isLoading = true;
@@ -519,5 +475,4 @@ const userTaskSlice = createSlice({
 });
 
 export default userTaskSlice.reducer;
-export const { USER_TASK_RESET, RESET_CARD_ADD_UPDATE_STATUS } =
-  userTaskSlice.actions;
+export const { USER_TASK_RESET } = userTaskSlice.actions;

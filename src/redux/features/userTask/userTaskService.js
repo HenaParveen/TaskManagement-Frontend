@@ -104,6 +104,13 @@ const updateUser = async (payLoad) => {
   return response.data;
 };
 
+const getAllEmail = async () => {
+  const API_URL = `${BACKEND_URL}api/v1/auth/emails`;
+  const response = await axios.get(API_URL, {
+    withCredentials: true,
+  });
+  return response.data;
+};
 const userTaskService = {
   register,
   login,
@@ -117,6 +124,7 @@ const userTaskService = {
   updateUser,
   logout,
   updateAssignee,
+  getAllEmail,
 };
 
 export default userTaskService;

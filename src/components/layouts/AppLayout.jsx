@@ -5,12 +5,12 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 function AppLayout() {
-  const { isLoggedIn } = useSelector((state) => state.userTask);
-  const navigate = useNavigate();
+  // const { isLoggedIn } = useSelector((state) => state.userTask);
+  // const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!isLoggedIn) navigate("/login");
-  }, [isLoggedIn, navigate]);
+  // useEffect(() => {
+  //   if (!isLoggedIn) navigate("/login");
+  // }, [isLoggedIn, navigate]);
   return (
     <div>
       <div style={{ display: "flex" }}>

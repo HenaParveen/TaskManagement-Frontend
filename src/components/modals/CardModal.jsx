@@ -14,6 +14,7 @@ import {
   addCard,
   updateCard,
 } from "../../redux/features/userTask/userTaskSlice";
+import userTaskService from "../../redux/features/userTask/userTaskService";
 
 const initialCardData = {
   title: "",
@@ -56,12 +57,8 @@ function CardModal({
   const [selectedPriority, setSelectedPriority] = useState(null);
   const [cardData, setCardData] = useState(initialCardData);
   const dispatch = useDispatch();
-  const [assignees, setAssignees] = useState([
-    { initials: "AK", email: "Akashgupta@gmail.com", isSelected: false },
-    // ... other initial assignees
-  ]);
-
-  const suggestions = ["Apple", "Banana", "Orange", "Pineapple", "Grapes"];
+  const [assignees, setAssignees] = useState([]);
+  const [assignTo, setAssignedTo] = useState("");
 
   const addTask = () => {
     setTasks((prevTasks) => [
@@ -98,6 +95,7 @@ function CardModal({
         isDone: task.isDone,
       })),
       dueDate: selectedDate ? format(selectedDate, "yyyy-MM-dd") : null,
+      assignee: assignTo,
     };
     setCardData(updatedCardData);
     if (mode === "edit") {
@@ -110,6 +108,17 @@ function CardModal({
     setRefresh((prev) => !prev);
   };
 
+  const fetchAllEmails = async () => {
+    try {
+      const response = await userTaskService.getAllEmail();
+      setAssignees(response.data);
+    } catch (error) {
+      console.error("Error fetching Emailss:", error);
+    }
+  };
+  useEffect(() => {
+    fetchAllEmails();
+  }, []);
   useEffect(() => {
     if (mode === "edit") {
       setCardData((prevData) => ({
@@ -181,15 +190,22 @@ function CardModal({
 
         <div className={styles.assignGroup}>
           <div className={styles.label}>Assign to</div>
-          <input
-            type="text"
-            name="assignee"
-            placeholder="add a assignee"
-            className={styles.titleInput}
-            style={{ width: "80%" }}
-            value={cardData.assignee}
-            onChange={handleInputChange}
-          />
+
+          {assignees.length > 0 && (
+            <select
+              value={assignTo || cardData.assignee}
+              className={styles.titleInput}
+              onChange={(e) => setAssignedTo(e.target.value)}
+              style={{ width: "80%" }}
+            >
+              <option value=""></option>
+              {assignees.map((email, index) => (
+                <option key={index} value={email}>
+                  {email}
+                </option>
+              ))}
+            </select>
+          )}
         </div>
         <div>
           <div className={styles.label}>

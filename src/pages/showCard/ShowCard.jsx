@@ -8,12 +8,14 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getCard } from "../../redux/features/userTask/userTaskSlice";
+import { useNavigate } from "react-router-dom";
 
 function ShowCard() {
   const [cardData, setCardData] = useState(null);
   const { isLoading } = useSelector((state) => state.userTask);
   const { cardId } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const priorities = {
     high: {
       color: "#FF2473",
