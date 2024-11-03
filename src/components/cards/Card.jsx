@@ -12,6 +12,7 @@ import { useDispatch } from "react-redux";
 
 import {
   deleteCard,
+  getCard,
   updateCardTaskStatus,
 } from "../../redux/features/userTask/userTaskSlice";
 import { getInitials } from "../../utils/helper";
@@ -164,6 +165,14 @@ function Card(props) {
     );
     // setRefresh((prev) => !prev);
   };
+
+  const fetchCardData = async () => {
+    const response = await dispatch(getCard(id));
+    setTasks(response?.payload?.data?.tasks);
+  };
+  useEffect(() => {
+    fetchCardData();
+  }, [showEditModal]);
 
   return (
     <div className={styles.card}>
